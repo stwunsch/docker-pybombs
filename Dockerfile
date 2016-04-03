@@ -7,7 +7,7 @@ FROM ubuntu:14.04
 ENV PyBOMBS_prefix myprefix
 
 # Setup packages which should be installed by PyBOMBS
-ENV packages "cmake swig numpy fftw boost cppunit"
+#ENV packages "cmake swig numpy fftw boost cppunit"
 
 # Update apt-get
 RUN apt-get update
@@ -30,4 +30,4 @@ RUN pybombs prefix init /usr/local/ -a ${PyBOMBS_prefix}
 RUN echo "source /usr/local/setup_env.sh" > /root/.bashrc
 
 # Install previously selected packages
-RUN pybombs -p ${PyBOMBS_prefix} -v install ${packages}
+#RUN pybombs -p ${PyBOMBS_prefix} -v install ${packages}
