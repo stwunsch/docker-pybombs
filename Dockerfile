@@ -3,11 +3,9 @@
 # Derive from Ubuntu
 FROM ubuntu:14.04
 
-# Set prefix variable
+# Set prefix variables
 ENV PyBOMBS_prefix myprefix
-
-# Setup packages which should be installed by PyBOMBS
-#ENV packages "cmake swig numpy fftw boost cppunit"
+ENV PyBOMBS_init /pybombs
 
 # Update apt-get
 RUN apt-get update
@@ -26,8 +24,5 @@ RUN pybombs recipes add gr-recipes git+https://github.com/gnuradio/gr-recipes.gi
 RUN pybombs recipes add gr-etcetera git+https://github.com/gnuradio/gr-etcetera.git
 
 # Setup environment
-RUN pybombs prefix init /usr/local/ -a ${PyBOMBS_prefix}
-RUN echo "source /usr/local/setup_env.sh" > /root/.bashrc
-
-# Install previously selected packages
-#RUN pybombs -p ${PyBOMBS_prefix} -v install ${packages}
+RUN pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix}
+RUN echo "source "${PyBOMBS_init}"/setup_env.sh" > /root/.bashrc
