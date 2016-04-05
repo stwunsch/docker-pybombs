@@ -1,7 +1,7 @@
 # PyBOMBS
 
 # Derive from Ubuntu
-FROM ubuntu:15.10
+FROM ubuntu:14.04
 
 # Set prefix variables
 ENV PyBOMBS_prefix myprefix
